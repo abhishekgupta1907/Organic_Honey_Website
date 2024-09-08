@@ -25,10 +25,13 @@ const Cart = ({
                             <div className="list-group-items" key={index}>
                                 <div>{item.name}</div>
                                 <div> ${item.price}</div>
-                                <div>{item.quantity}</div>
+                                <div style={{ marginLeft: "20px" }}>
+                                    {item.quantity}
+                                </div>
                                 <div> ${item.price * item.quantity}</div>
                                 <RxCross2
                                     className="remove-button"
+                                    style={{ marginLeft: "20px" }}
                                     onClick={() => removeFromCart(item)}
                                 />
                             </div>
