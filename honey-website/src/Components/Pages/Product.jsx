@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./Product.css";
 
 const products = [
@@ -70,26 +70,24 @@ const products = [
     },
 ];
 
-const Product = ({ showCartIcon }) => {
-    const [cart, setCart] = useState([]);
+const Product = ({
+    showCartIcon,
+    cart,
+    setCart,
+    addToCart,
+    removeFromCart,
+    handleCheckout,
+}) => {
     useEffect(() => {
         showCartIcon(true);
     });
-
-    const addToCart = (product) => {
-        setCart([...cart, product]);
-    };
-
-    const handleCheckout = () => {
-        alert("Proceeding to checkout...");
-    };
 
     return (
         <main className="container">
             <h1>Honey Products</h1>
             <div className="product-list">
                 {products.map((product) => (
-                    <div className="" key={product.id}>
+                    <div key={product.id}>
                         <div className="card">
                             <div className="card-body">
                                 <h5 className="card-title">{product.name}</h5>
@@ -107,22 +105,6 @@ const Product = ({ showCartIcon }) => {
                     </div>
                 ))}
             </div>
-
-            {cart.length > 0 && (
-                <div className="cart-summary">
-                    <h2>Your Cart</h2>
-                    <ul className="list-group">
-                        {cart.map((item, index) => (
-                            <li className="list-group-item" key={index}>
-                                {item.name} - ${item.price}
-                            </li>
-                        ))}
-                    </ul>
-                    <button onClick={handleCheckout}>
-                        Proceed to Checkout
-                    </button>
-                </div>
-            )}
         </main>
     );
 };

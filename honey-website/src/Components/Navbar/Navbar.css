@@ -1,28 +1,91 @@
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    z-index: 1000; /* Ensures the navbar stays above all other content */
+    padding: 10px 0;
+    background-color: #f8f8f8;
+}
+
 .nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    background-color: #f8f8f8;
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .logo {
-    font-size: 24px;
+    font-size: 1.8rem;
     font-weight: bold;
+    color: #333;
 }
 
 .list ul {
-    display: flex;
     list-style: none;
+    display: flex;
     gap: 20px;
+    margin: 0;
+    padding: 0;
 }
 
-.list a {
+.list ul li {
+    display: inline-block;
+}
+
+.list ul li a {
     text-decoration: none;
     color: #333;
-    font-size: 18px;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
 }
 
-.list a:hover {
-    color: #f0a500;
+.list ul li a:hover {
+    color: green;
+}
+
+/* Cart Icon */
+.cart-img {
+    position: relative;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-top: -6px;
+}
+
+.dot {
+    position: absolute;
+    min-width: 8px;
+    min-height: 8px;
+    background-color: rgb(60, 60, 90);
+    border-radius: 50%;
+    top: 20px;
+    right: 172px;
+}
+/* Padding to ensure content doesn't get hidden under the navbar */
+body {
+    padding-top: 70px; /* Adjust this based on your navbar's height */
+}
+
+/* Media query for responsive navbar */
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .list ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .list ul li a {
+        font-size: 1rem;
+    }
+
+    .logo {
+        margin-bottom: 10px;
+    }
 }

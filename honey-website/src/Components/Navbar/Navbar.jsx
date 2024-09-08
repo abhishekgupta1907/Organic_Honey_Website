@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Navbar.css"; // Optional, if you want to style separately
+import "./Navbar.css";
 import { FaShoppingCart } from "react-icons/fa";
-const Navbar = ({ cartIcon }) => {
+const Navbar = ({ cartIcon, cart }) => {
     return (
         <header>
             <nav className="nav">
@@ -21,7 +21,7 @@ const Navbar = ({ cartIcon }) => {
                         <li>
                             <Link to="/contact">Contact</Link>
                         </li>
-                        {cartIcon ? (
+                        {cartIcon || cart.length > 0 ? (
                             <div>
                                 {" "}
                                 <li className="cart-img">
@@ -29,7 +29,9 @@ const Navbar = ({ cartIcon }) => {
                                         <FaShoppingCart />
                                     </Link>
                                 </li>
-                                <div></div>
+                                <div
+                                    className={cart.length === 0 ? "" : "dot"}
+                                ></div>
                             </div>
                         ) : (
                             <></>
