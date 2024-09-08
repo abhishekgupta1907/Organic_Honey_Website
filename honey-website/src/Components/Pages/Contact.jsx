@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const Contact = () => {
+const Contact = ({ showCartIcon }) => {
     const [formData, setFormData] = useState({
         name: "",
         email: "",
         message: "",
     });
-
+    useEffect(() => {
+        showCartIcon(false);
+    });
     const handleChange = (e) => {
         const { id, value } = e.target;
         setFormData({ ...formData, [id]: value });

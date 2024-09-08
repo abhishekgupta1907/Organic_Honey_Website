@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./About.css"; // Optional for external styling
 
-const About = () => {
+const About = ({ showCartIcon }) => {
+    useEffect(() => {
+        showCartIcon(false);
+    });
     return (
         <main className="about container my-5">
             <section className="text-center">

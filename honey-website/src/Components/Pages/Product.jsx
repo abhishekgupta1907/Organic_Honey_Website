@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import "./Product.css"; // Optional for external styling
+import React, { useEffect, useState } from "react";
+import "./Product.css";
 
 const products = [
     {
@@ -24,7 +24,7 @@ const products = [
         id: 4,
         name: "Acacia Honey",
         price: 18.99,
-        description: "Light and mild honey, perfect for tea.",
+        description: "Light and mild honey, perfect for tea and desert",
     },
     {
         id: 5,
@@ -70,8 +70,11 @@ const products = [
     },
 ];
 
-const Product = () => {
+const Product = ({ showCartIcon }) => {
     const [cart, setCart] = useState([]);
+    useEffect(() => {
+        showCartIcon(true);
+    });
 
     const addToCart = (product) => {
         setCart([...cart, product]);
@@ -79,18 +82,14 @@ const Product = () => {
 
     const handleCheckout = () => {
         alert("Proceeding to checkout...");
-        // Add logic for checkout here
     };
 
     return (
-        <main className="container my-5">
+        <main className="container">
             <h1>Honey Products</h1>
-            <div className="product-list row">
+            <div className="product-list">
                 {products.map((product) => (
-                    <div
-                        className="col-md-4 col-sm-6 col-12 mb-4"
-                        key={product.id}
-                    >
+                    <div className="" key={product.id}>
                         <div className="card">
                             <div className="card-body">
                                 <h5 className="card-title">{product.name}</h5>
@@ -100,10 +99,7 @@ const Product = () => {
                                 <p className="card-text">
                                     <strong>${product.price}</strong>
                                 </p>
-                                <button
-                                    className="btn btn-success"
-                                    onClick={() => addToCart(product)}
-                                >
+                                <button onClick={() => addToCart(product)}>
                                     Add to Cart
                                 </button>
                             </div>
@@ -115,17 +111,14 @@ const Product = () => {
             {cart.length > 0 && (
                 <div className="cart-summary">
                     <h2>Your Cart</h2>
-                    <ul className="list-group mb-3">
+                    <ul className="list-group">
                         {cart.map((item, index) => (
                             <li className="list-group-item" key={index}>
                                 {item.name} - ${item.price}
                             </li>
                         ))}
                     </ul>
-                    <button
-                        className="btn btn-primary"
-                        onClick={handleCheckout}
-                    >
+                    <button onClick={handleCheckout}>
                         Proceed to Checkout
                     </button>
                 </div>
